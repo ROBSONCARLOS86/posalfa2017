@@ -28,53 +28,58 @@
             jogador.setLugar(lc.getSul());
         }
     }
-
-
 %>
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
         <title>Jogo 2017</title>
+        
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
-        <h1>Olá <%=jogador.getNome()%></h1>
-        <%
-lc = jogador.getLugar();
-        %>
+        <div class="jumbotron">
+        <h2>Seja Bem Vindo <%=jogador.getNome()%></h2>
+        <img src="casa3.png" alt="" width="250" height="150" />
+        <%lc = jogador.getLugar();%>
 
+        <h4>Você está no(a):<%=jogador.getLugar().getDescricao()%></h4>
+        <h4>Com:<%=jogador.getLugar().getPersonagens()%></h4>
+        <h4>Mensagens<%=jogador.getLugar().getMensagens()%></h4>
+        </div>
+        <form method="POST" action="principal.jsp" class="navbar-form navbar-left" >
+        <div>
+            <%if (lc.getLeste() != null) {
+                //out.println("1) Para leste " + lc.getLeste().getDescricao());
+                %><button type="submit" class="btn btn-primary" value="1" name="movimento" >►</button><%
+            }%>
+            
+            <%if (lc.getOeste() != null) {
+                //out.println("2) Para Oeste " + lc.getOeste().getDescricao());
+            %><button type="submit" class="btn btn-primary" value="2" name="movimento" >◄</button><%
+            }%>
+            
+            <%if (lc.getNorte() != null) {
+                //out.println("3) Para Norte " + lc.getNorte().getDescricao());
+            %><button type="submit" class="btn btn-primary" value="3" name="movimento" >▲</button><%
+            }%>
 
-        <h2>Você está no(a):
-            <%=jogador.getLugar().getDescricao()%></h2>
-        <h2>Com:
-            <%=jogador.getLugar().getPersonagens()%></h2>
-
-        <h4>Mensagens
-            <%=jogador.getLugar().getMensagens()%></h2>
-
-
-        <pre><%
-
-            if (lc.getLeste() != null) {
-                out.println("1) Para leste " + lc.getLeste().getDescricao());
-            }
-            if (lc.getOeste() != null) {
-                out.println("2) Para Oeste " + lc.getOeste().getDescricao());
-            }
-            if (lc.getNorte() != null) {
-                out.println("3) Para Norte " + lc.getNorte().getDescricao());
-            }
-            if (lc.getSul() != null) {
-                out.println("4) Para Sul " + lc.getSul().getDescricao());
-            }
-
-            %>
-        </pre>
-        <form method="POST" action="principal.jsp">
-            Movimento:<input type="text" name="movimento" value="" /><br/>
-            Mensagem:<input type="text" name="mensagem" value="" /><br/>
-            <input type="submit" value="Enviar" />
+            <%if (lc.getSul() != null) {
+                //out.println("4) Para Sul " + lc.getSul().getDescricao());
+            %><button type="submit" class="btn btn-primary" value="4" name="movimento" >▼</button><%
+            }%>
+        </div>
+        
+         <div class="form-group">
+             <br><br>
+            <!--Movimento:<input type="text" name="movimento" value="" class="form-control" /><br/>-->
+            Mensagem:<input type="text" name="mensagem" value="" class="form-control" />
+            <input type="submit" class="btn btn-primary" value="Enviar" />
+         </div>
         </form>
 </body>
 </html>

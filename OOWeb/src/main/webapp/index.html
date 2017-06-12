@@ -3,12 +3,18 @@
     <head>
         <title>Pos 2017</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
         <h1>Pos 2017</h1>
-        <form action="principal.jsp" method="POST">
-            Nome:<input type="text" name="nome" value="" />
-            <input type="submit" value="Enviar" />
+        <form action="principal.jsp" method="POST" class="navbar-form navbar-left">
+         <div class="form-group">
+            Nome do Jogador:<input type="text" name="nome" value="" class="form-control"/>
+            <input type="submit" value="Entrar" class="btn btn-primary" />
+         </div>
         </form>
         
     </body>
